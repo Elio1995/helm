@@ -1,0 +1,110 @@
+// Prisma schema — Helm storefront
+//
+// SQLite is the dev backend because the entire app's persistence (cart sessions,
+// orders) is fine on a single-writer file DB; this keeps the demo zero-config.
+// For production, swap `provider = "postgresql"` and rewrite the URL — no model
+// changes are needed.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---- Books are the catalog. The catalog itself is a hardcoded JSON dataset
+// (src/data/books.ts) — the DB only stores books that have ever been added to
+// a cart or ordered, so we can keep historical pricing and titles even if the
+// catalog changes. This is the standard "catalog snapshot" pattern used by
+// real storefronts: cart items never silently update when a SKU is repriced.
+model Book {
+  id          String     @id @default(cuid())
+  slug        String     @unique
+  title       String
+  author      String
+  isbn        String     @unique
+  priceCents  Int
+  currency    String     @default("CAD")
+  imageUrl    String
+  description String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  cartItems   CartItem[]
+  orderItems  OrderItem[]
+
+  @@index([slug])
+}
+
+// ---- Cart is keyed by an anonymous cookie. There is no user record; the
+// cookie carries a CUID that maps to a row here. Carts older than 30 days get
+// pruned by a cron in a real deployment (out of scope for the demo).
+model Cart {
+  id        String     @id @default(cuid())
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  items     CartItem[]
+}
+
+model CartItem {
+  id        String   @id @default(cuid())
+  cart      Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  cartId    String
+  book      Book     @relation(fields: [bookId], references: [id])
+  bookId    String
+  quantity  Int
+  // Price at the time the item was added — guards against pricing drift between
+  // catalog and cart while the customer is still shopping.
+  unitPriceCents Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([cartId, bookId])
+  @@index([cartId])
+}
+
+// ---- Orders are created on Stripe webhook receipt. The Stripe session ID is
+// the durable idempotency key; re-processing the same webhook is a no-op.
+model Order {
+  id              String      @id @default(cuid())
+  stripeSessionId String      @unique
+  email           String
+  status          OrderStatus @default(PENDING)
+  subtotalCents   Int
+  taxCents        Int         @default(0)
+  totalCents      Int
+  currency        String      @default("CAD")
+  shippingName    String?
+  shippingLine1   String?
+  shippingLine2   String?
+  shippingCity    String?
+  shippingRegion  String?
+  shippingPostal  String?
+  shippingCountry String?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  items OrderItem[]
+}
+
+model OrderItem {
+  id             String @id @default(cuid())
+  order          Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId        String
+  book           Book   @relation(fields: [bookId], references: [id])
+  bookId         String
+  title          String
+  quantity       Int
+  unitPriceCents Int
+
+  @@index([orderId])
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
