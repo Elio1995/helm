@@ -1,0 +1,108 @@
+{
+  "metadata": {
+    "siteTitle": "Helm — librairie spécialisée",
+    "siteDescription": "Des livres choisis avec soin, pour des lecteurs qui aiment la reliure, les marges et les mots.",
+    "home": "Accueil",
+    "books": "Livres",
+    "bookDetail": "{title} par {author}",
+    "cart": "Panier",
+    "checkout": "Paiement",
+    "checkoutSuccess": "Commande confirmée",
+    "orders": "Commandes"
+  },
+  "nav": {
+    "home": "Accueil",
+    "books": "Livres",
+    "cart": "Panier",
+    "orders": "Commandes",
+    "language": "Langue",
+    "english": "English",
+    "french": "Français",
+    "menu": "Menu"
+  },
+  "hero": {
+    "kicker": "Indépendant. Sélectionné. Expédié.",
+    "title": "Une petite étagère, choisie avec soin.",
+    "subtitle": "Quinze livres qu'on vous tendrait au comptoir, un paragraphe chacun pour expliquer pourquoi.",
+    "cta": "Parcourir l'étagère"
+  },
+  "home": {
+    "featured": "À l'affiche",
+    "browseCategories": "Parcourir par catégorie",
+    "viewAll": "Voir tous les livres"
+  },
+  "books": {
+    "title": "Tous les livres",
+    "filter": "Filtrer",
+    "all": "Tous",
+    "empty": "Aucun livre dans cette catégorie pour le moment.",
+    "addToCart": "Ajouter au panier",
+    "addedToCart": "Ajouté",
+    "outOfStock": "Épuisé",
+    "by": "par {author}"
+  },
+  "bookDetail": {
+    "isbn": "ISBN",
+    "category": "Catégorie",
+    "description": "À propos de ce livre",
+    "addToCart": "Ajouter au panier",
+    "buyNow": "Acheter maintenant",
+    "back": "Retour aux livres"
+  },
+  "cart": {
+    "title": "Votre panier",
+    "empty": "Votre panier est vide.",
+    "emptyCta": "Parcourir l'étagère",
+    "quantity": "Quantité",
+    "remove": "Retirer",
+    "subtotal": "Sous-total",
+    "tax": "Taxe (TVH)",
+    "total": "Total",
+    "checkout": "Passer au paiement",
+    "continue": "Continuer mes achats",
+    "itemCount": "{count, plural, =0 {Aucun article} =1 {1 article} other {# articles}}"
+  },
+  "checkout": {
+    "title": "Paiement",
+    "contact": "Coordonnées",
+    "email": "Courriel",
+    "shipping": "Livraison",
+    "name": "Nom complet",
+    "address1": "Adresse",
+    "address2": "App., suite, etc. (facultatif)",
+    "city": "Ville",
+    "region": "Province",
+    "postal": "Code postal",
+    "country": "Pays",
+    "orderSummary": "Récapitulatif",
+    "pay": "Payer avec Stripe",
+    "paying": "Redirection vers Stripe…",
+    "secureNotice": "Vous serez redirigé vers Stripe pour entrer votre carte. Nous ne voyons jamais votre carte."
+  },
+  "success": {
+    "title": "Commande confirmée",
+    "subtitle": "Merci — votre commande est enregistrée. Un reçu sera envoyé à {email}.",
+    "orderId": "N° de commande",
+    "continue": "Continuer à explorer"
+  },
+  "orders": {
+    "title": "Vos commandes",
+    "signedOut": "Connectez-vous pour voir vos commandes. (L'authentification est volontairement hors de la portée de cette démo.)"
+  },
+  "footer": {
+    "tagline": "Helm — un projet de portfolio.",
+    "github": "Code source sur GitHub"
+  },
+  "categories": {
+    "fiction": "Fiction",
+    "nonfiction": "Non-fiction",
+    "science": "Science",
+    "philosophy": "Philosophie",
+    "history": "Histoire",
+    "poetry": "Poésie"
+  },
+  "errors": {
+    "generic": "Une erreur est survenue. Veuillez réessayer.",
+    "stripeNotConfigured": "Stripe n'est pas configuré. Définissez STRIPE_SECRET_KEY dans .env pour activer le paiement."
+  }
+}
