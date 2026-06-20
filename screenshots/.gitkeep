@@ -1,0 +1,11 @@
+# Drop screenshots here and reference them from README.md.
+#
+# Suggested set:
+#   01-home.png            — landing page with the hero + featured strip
+#   02-catalog.png         — /books with a category filter active
+#   03-book-detail.png     — /books/the-overstory
+#   04-cart.png            — /cart with two items and the order summary
+#   05-checkout.png        — /checkout with the shipping form
+#   06-stripe.png          — Stripe Checkout (test mode)
+#   07-success.png         — /checkout/success after a paid test session
+#   08-french.png          — any of the above with the FR locale active
