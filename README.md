@@ -64,18 +64,17 @@ Everything also works in French.
 
 ### Screenshots
 
-> Add screenshots to the `screenshots/` folder and reference them here.
+Captured from the running dev server at 1280x800 @2x.
 
 | Page | Screenshot |
 | ---- | ---------- |
-| Home (EN) | `screenshots/01-home.png` |
-| Catalog | `screenshots/02-catalog.png` |
-| Book detail | `screenshots/03-book-detail.png` |
-| Cart | `screenshots/04-cart.png` |
-| Checkout | `screenshots/05-checkout.png` |
-| Stripe (test) | `screenshots/06-stripe.png` |
-| Order confirmed | `screenshots/07-success.png` |
-| French | `screenshots/08-french.png` |
+| Home (EN) | ![Home](screenshots/01-home.png) |
+| Catalog | ![Catalog](screenshots/02-catalog.png) |
+| Book detail | ![Book detail](screenshots/03-book-detail.png) |
+| Cart | ![Cart](screenshots/04-cart.png) |
+| Home (FR) | ![Home in French](screenshots/08-home-fr.png) |
+
+Checkout and the post-checkout success page are not pictured: both require a live `STRIPE_SECRET_KEY` and render server errors without one. Drop a test key into `.env` and they work exactly like the rest of the app.
 
 ---
 

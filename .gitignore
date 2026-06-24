@@ -49,3 +49,4 @@ prisma/migrations/dev/
 
 # Repo bootstrap script — run once locally, not part of project source
 INIT_REPO.sh
+scripts/
