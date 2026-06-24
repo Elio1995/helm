@@ -3,9 +3,9 @@
 
 import 'server-only';
 
-import { db } from '@/lib/db';
-import { getCartId } from '@/lib/cart-session';
 import { computeCartTotals } from '@/lib/cart-math';
+import { getCartId } from '@/lib/cart-session';
+import { db } from '@/lib/db';
 
 export interface CartLine {
   id: string;

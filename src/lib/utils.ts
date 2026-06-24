@@ -6,11 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /** Render integer cents as a locale-aware currency string. */
-export function formatPrice(
-  cents: number,
-  currency = 'CAD',
-  locale: 'en' | 'fr' = 'en',
-): string {
+export function formatPrice(cents: number, currency = 'CAD', locale: 'en' | 'fr' = 'en'): string {
   return new Intl.NumberFormat(locale === 'fr' ? 'fr-CA' : 'en-CA', {
     style: 'currency',
     currency,

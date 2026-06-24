@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import { getLocale, getTranslations } from 'next-intl/server';
-import { Link } from '@/i18n/navigation';
 import type { CatalogBook } from '@/data/books';
+import { Link } from '@/i18n/navigation';
 import { formatPrice } from '@/lib/utils';
+import { getLocale, getTranslations } from 'next-intl/server';
+import Image from 'next/image';
 import { Badge } from './ui/badge';
 
 // Server component. Renders a single book card on the home / catalog pages.
@@ -14,7 +14,7 @@ export async function BookCard({ book }: { book: CatalogBook }) {
 
   return (
     <Link
-      href={{ pathname: '/books/[slug]', params: { slug: book.slug } }}
+      href={`/books/${book.slug}`}
       className="group flex flex-col overflow-hidden rounded-lg border bg-card transition-shadow hover:shadow-md"
     >
       <div className="relative aspect-[2/3] w-full bg-muted">

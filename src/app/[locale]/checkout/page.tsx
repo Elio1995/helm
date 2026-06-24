@@ -1,6 +1,3 @@
-import type { Metadata } from 'next';
-import { Lock } from 'lucide-react';
-import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -9,6 +6,9 @@ import { readCart } from '@/lib/cart';
 import { checkoutAndRedirect } from '@/lib/checkout-actions';
 import { STRIPE_CONFIGURED } from '@/lib/stripe';
 import { formatPrice } from '@/lib/utils';
+import { Lock } from 'lucide-react';
+import type { Metadata } from 'next';
+import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 
 export async function generateMetadata({
   params,
@@ -81,12 +81,7 @@ export default async function CheckoutPage({
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="address1">{t('checkout.address1')}</Label>
-              <Input
-                id="address1"
-                name="address1"
-                required
-                autoComplete="address-line1"
-              />
+              <Input id="address1" name="address1" required autoComplete="address-line1" />
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="address2">{t('checkout.address2')}</Label>

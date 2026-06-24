@@ -1,10 +1,10 @@
 'use client';
 
-import { useLocale } from 'next-intl';
-import { useTransition } from 'react';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
+import { useLocale } from 'next-intl';
+import { useTransition } from 'react';
 
 // Language switcher. Client component because it needs `useRouter` to push
 // the same route under a different locale. The transition keeps the new
@@ -29,6 +29,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
         pending && 'opacity-60',
         className,
       )}
+      // biome-ignore lint/a11y/useSemanticElements: <fieldset> implies form context; this is a button group toggle.
       role="group"
       aria-label="Language"
     >

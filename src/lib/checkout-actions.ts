@@ -1,10 +1,10 @@
 'use server';
 
-import { redirect } from 'next/navigation';
-import { z } from 'zod';
 import { readCart } from '@/lib/cart';
 import { captureException } from '@/lib/sentry';
 import { STRIPE_CONFIGURED, stripe } from '@/lib/stripe';
+import { redirect } from 'next/navigation';
+import { z } from 'zod';
 
 // Checkout server action. Validates input, builds line items from the
 // authoritative cart (never trust prices from the client), creates a Stripe
@@ -25,9 +25,7 @@ const checkoutSchema = z.object({
 
 export type CheckoutInput = z.infer<typeof checkoutSchema>;
 
-export type CheckoutResult =
-  | { ok: true; redirectUrl: string }
-  | { ok: false; error: string };
+export type CheckoutResult = { ok: true; redirectUrl: string } | { ok: false; error: string };
 
 export async function createCheckoutSession(input: CheckoutInput): Promise<CheckoutResult> {
   const parsed = checkoutSchema.safeParse(input);
@@ -105,7 +103,7 @@ export async function checkoutAndRedirect(formData: FormData): Promise<void> {
     region: String(formData.get('region') ?? ''),
     postal: String(formData.get('postal') ?? ''),
     country: String(formData.get('country') ?? 'CA'),
-    locale: (String(formData.get('locale') ?? 'en') as 'en' | 'fr'),
+    locale: String(formData.get('locale') ?? 'en') as 'en' | 'fr',
   };
 
   const result = await createCheckoutSession(input);

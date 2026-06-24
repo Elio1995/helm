@@ -1,14 +1,14 @@
-import { ArrowLeft } from 'lucide-react';
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 import { AddToCartButton } from '@/components/add-to-cart-button';
 import { Badge } from '@/components/ui/badge';
 import { BOOKS, getBookBySlug } from '@/data/books';
 import { Link } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 import { formatPrice } from '@/lib/utils';
+import { ArrowLeft } from 'lucide-react';
+import type { Metadata } from 'next';
+import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 // Generate one static route per locale × per book at build time. With 15
 // books × 2 locales that's 30 prerendered pages — trivial.

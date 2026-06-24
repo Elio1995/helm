@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest';
 import { routing } from '@/i18n/routing';
+import { describe, expect, it } from 'vitest';
 
 // Cheap structural checks on the routing config. The point isn't to test
 // next-intl — it's to fail loudly when someone deletes a locale or flips the

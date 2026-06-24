@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
-import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 import { CartLine } from '@/components/cart-line';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
 import { readCart } from '@/lib/cart';
 import { formatPrice } from '@/lib/utils';
+import type { Metadata } from 'next';
+import { getLocale, getTranslations, setRequestLocale } from 'next-intl/server';
 
 export async function generateMetadata({
   params,

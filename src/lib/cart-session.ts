@@ -8,8 +8,8 @@
 import 'server-only';
 
 import { createHmac, timingSafeEqual } from 'node:crypto';
-import { cookies } from 'next/headers';
 import { db } from '@/lib/db';
+import { cookies } from 'next/headers';
 
 export const CART_COOKIE = 'helm_cart';
 const MAX_AGE_SECONDS = 60 * 60 * 24 * 30; // 30 days

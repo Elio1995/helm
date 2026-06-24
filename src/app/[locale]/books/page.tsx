@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { BookCard } from '@/components/book-card';
 import { type BookCategory, CATEGORIES, getBooksByCategory } from '@/data/books';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
+import type { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 const VALID_CATEGORIES = new Set<string>(CATEGORIES.map((c) => c.value));
 

@@ -1,10 +1,14 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { NextIntlClientProvider, hasLocale } from 'next-intl';
-import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { routing } from '@/i18n/routing';
+import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+
+function isSupportedLocale(value: string): value is (typeof routing.locales)[number] {
+  return (routing.locales as readonly string[]).includes(value);
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -16,12 +20,12 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) return {};
+  if (!isSupportedLocale(locale)) return {};
   const t = await getTranslations({ locale, namespace: 'metadata' });
   return {
     title: {
       default: t('siteTitle'),
-      template: `%s · Helm`,
+      template: '%s · Helm',
     },
     description: t('siteDescription'),
     openGraph: {
@@ -41,7 +45,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) {
+  if (!isSupportedLocale(locale)) {
     notFound();
   }
 

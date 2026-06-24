@@ -11,16 +11,14 @@
 // route, which mutates the bytes, which breaks signature verification.
 
 import { createHmac } from 'node:crypto';
-import { describe, expect, it } from 'vitest';
 import Stripe from 'stripe';
+import { describe, expect, it } from 'vitest';
 
 const SECRET = 'whsec_test_dummy';
 const stripe = new Stripe('sk_test_dummy', { typescript: true });
 
 function sign(rawBody: string, timestamp: number, secret = SECRET): string {
-  const signature = createHmac('sha256', secret)
-    .update(`${timestamp}.${rawBody}`)
-    .digest('hex');
+  const signature = createHmac('sha256', secret).update(`${timestamp}.${rawBody}`).digest('hex');
   return `t=${timestamp},v1=${signature}`;
 }
 

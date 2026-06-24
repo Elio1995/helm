@@ -1,13 +1,13 @@
 'use client';
 
-import { Minus, Plus, Trash2 } from 'lucide-react';
-import Image from 'next/image';
-import { useOptimistic, useTransition } from 'react';
-import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import type { CartLine as CartLineType } from '@/lib/cart';
 import { removeCartItem, setCartItemQuantity } from '@/lib/cart-actions';
 import { formatPrice } from '@/lib/utils';
+import { Minus, Plus, Trash2 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import { useOptimistic, useTransition } from 'react';
 
 // Optimistic quantity updates. The pattern:
 //   1. User clicks +/-/trash.
@@ -43,17 +43,14 @@ export function CartLine({ line, locale }: { line: CartLineType; locale: 'en' | 
   return (
     <li className="flex gap-4 border-b py-4">
       <Link
-        href={{ pathname: '/books/[slug]', params: { slug: line.slug } }}
+        href={`/books/${line.slug}`}
         className="relative aspect-[2/3] w-20 shrink-0 overflow-hidden rounded bg-muted"
       >
         <Image src={line.imageUrl} alt={line.title} fill sizes="80px" className="object-cover" />
       </Link>
 
       <div className="flex flex-1 flex-col">
-        <Link
-          href={{ pathname: '/books/[slug]', params: { slug: line.slug } }}
-          className="font-medium hover:underline"
-        >
+        <Link href={`/books/${line.slug}`} className="font-medium hover:underline">
           {line.title}
         </Link>
         <p className="text-xs text-muted-foreground">{line.author}</p>

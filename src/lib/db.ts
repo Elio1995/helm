@@ -5,7 +5,6 @@
 import { PrismaClient } from '@prisma/client';
 
 declare global {
-  // biome-ignore lint/style/noVar: required for the global singleton trick
   var __helmPrisma: PrismaClient | undefined;
 }
 

@@ -1,9 +1,9 @@
-import { ArrowRight } from 'lucide-react';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { BookCard } from '@/components/book-card';
 import { Button } from '@/components/ui/button';
 import { CATEGORIES, getFeaturedBooks } from '@/data/books';
 import { Link } from '@/i18n/navigation';
+import { ArrowRight } from 'lucide-react';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 // Home is a pure server component. The book catalog ships in the bundle so
 // there's no data fetch — Next will fully prerender this page at build time

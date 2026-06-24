@@ -1,11 +1,11 @@
-import { CheckCircle2 } from 'lucide-react';
-import type { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
 import { clearCartCookie } from '@/lib/cart-session';
 import { db } from '@/lib/db';
 import { STRIPE_CONFIGURED, stripe } from '@/lib/stripe';
+import { CheckCircle2 } from 'lucide-react';
+import type { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 export async function generateMetadata({
   params,
@@ -23,7 +23,9 @@ export const dynamic = 'force-dynamic';
 // can't reach the app (e.g. local dev without `stripe listen` running). It
 // reads the session ID from the URL, asks Stripe whether it's paid, and
 // upserts the Order row. The webhook does the same, idempotently.
-async function reconcileOrder(sessionId: string): Promise<{ email: string; orderId: string } | null> {
+async function reconcileOrder(
+  sessionId: string,
+): Promise<{ email: string; orderId: string } | null> {
   if (!STRIPE_CONFIGURED) return null;
 
   try {

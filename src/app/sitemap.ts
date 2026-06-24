@@ -1,6 +1,6 @@
-import type { MetadataRoute } from 'next';
 import { BOOKS } from '@/data/books';
 import { routing } from '@/i18n/routing';
+import type { MetadataRoute } from 'next';
 
 const BASE = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000';
 

@@ -1,7 +1,7 @@
-import { Compass, ShoppingBag } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { readCartItemCount } from '@/lib/cart';
+import { Compass, ShoppingBag } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 import { LanguageSwitcher } from './language-switcher';
 
 // Server component: reads the cart count from the DB on every render. The

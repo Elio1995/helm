@@ -1,18 +1,16 @@
 'use server';
 
+import { ensureCart, getCartId } from '@/lib/cart-session';
+import { db } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
-import { db } from '@/lib/db';
-import { ensureCart, getCartId } from '@/lib/cart-session';
 
 // All actions return a small JSON-friendly result so client components can
 // distinguish success from a rollback. Throwing inside a server action is
 // caught by Next, but the network round-trip swallows the message — explicit
 // result envelopes keep error UX in the client's control.
 
-export type ActionResult<T = undefined> =
-  | { ok: true; data?: T }
-  | { ok: false; error: string };
+export type ActionResult<T = undefined> = { ok: true; data?: T } | { ok: false; error: string };
 
 const addToCartSchema = z.object({
   bookSlug: z.string().min(1).max(120),

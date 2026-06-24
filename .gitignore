@@ -37,6 +37,10 @@ Thumbs.db
 # Prisma
 prisma/*.db
 prisma/*.db-journal
+prisma/migrations/dev/
+
+# TypeScript incremental build info
+*.tsbuildinfo
 
 # Misc
 *.local

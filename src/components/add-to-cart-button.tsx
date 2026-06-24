@@ -1,11 +1,11 @@
 'use client';
 
-import { Check, Loader2, ShoppingBag } from 'lucide-react';
-import { useTransition, useState } from 'react';
-import { useTranslations } from 'next-intl';
 import { addToCart } from '@/lib/cart-actions';
-import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
+import { Check, Loader2, ShoppingBag } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { useState, useTransition } from 'react';
+import { Button } from './ui/button';
 
 // Optimistic add-to-cart. The button briefly shows a checkmark on success so
 // the user knows it worked without bouncing them to the cart page.

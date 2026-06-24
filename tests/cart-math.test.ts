@@ -1,5 +1,5 @@
+import { TAX_RATE_BPS, applyPromoCode, computeCartTotals } from '@/lib/cart-math';
 import { describe, expect, it } from 'vitest';
-import { applyPromoCode, computeCartTotals, TAX_RATE_BPS } from '@/lib/cart-math';
 
 describe('computeCartTotals', () => {
   it('returns all zeros on an empty cart', () => {

@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest';
 import {
   BOOKS,
   CATEGORIES,
@@ -6,6 +5,7 @@ import {
   getBooksByCategory,
   getFeaturedBooks,
 } from '@/data/books';
+import { describe, expect, it } from 'vitest';
 
 describe('catalog data', () => {
   it('has at least 15 unique books', () => {

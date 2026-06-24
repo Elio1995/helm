@@ -9,11 +9,11 @@
 // our locale routing. The middleware matcher in `src/middleware.ts` excludes
 // `/api/*` so the URL stays clean.
 
-import { type NextRequest, NextResponse } from 'next/server';
-import type Stripe from 'stripe';
 import { db } from '@/lib/db';
 import { captureException } from '@/lib/sentry';
 import { STRIPE_CONFIGURED, stripe } from '@/lib/stripe';
+import { type NextRequest, NextResponse } from 'next/server';
+import type Stripe from 'stripe';
 
 export const runtime = 'nodejs'; // raw body required — Edge can't do that easily
 
